@@ -1,0 +1,28 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.statusBar.visible": false,
+    "editor.renderWhitespace": "all",
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.lightbulb.enabled": false,
+    "editor.overviewRulerBorder": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "material-icon-theme.showUpdateMessage": false,
+    "extensions.ignoreRecommendations": false,
+    "csharp.suppressDotnetInstallWarning": true,
+    "editor.codeLens": false,
+    "editor.insertSpaces": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.autoClosingBrackets": false,
+    "editor.formatOnPaste": true,
+    "terminal.integrated.macOptionIsMeta": true,
+    "explorer.openEditors.visible": 0,
+    "workbench.editor.showTabs": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "window.zoomLevel": -1
+}
