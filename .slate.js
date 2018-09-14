@@ -33,10 +33,22 @@ var cycleHorizontalSize = function () {
 	var screenRect = screen.visibleRect();
 
 	var targetWidth = getNextFraction(windowRect.width, horizontalFractions, screenRect.width);
+	// Make room for larger window, otherwise resize will fail
 	if (screenRect.width - windowRect.x < targetWidth) {
 		window.move({"x": screenRect.width - targetWidth, "y": windowRect.y});
 	}
 	window.resize({"width": targetWidth, "height": windowRect.height});
+
+	// Incrementally increase target width, to avoid odd behavior windows with discrete sizes, like terminal and emacs
+	var scale = 1;
+	var compensationFactor = 0.001;
+	var i = 1;
+	var compensatedTargetWidth;
+	for (var i = 0; window.rect().width < targetWidth; i++) {
+		compensatedTargetWidth = targetWidth * (scale + compensationFactor * i);
+		window.resize({ "width": compensatedTargetWidth, "height": windowRect.height });
+		windowRect = window.rect();
+	}
 }
 
 var cycleVerticalSize = function () {
@@ -47,10 +59,22 @@ var cycleVerticalSize = function () {
 	var screenRect = screen.visibleRect();
 
 	var targetHeight = getNextFraction(windowRect.height, verticalFractions, screenRect.height);
+	// Make room for larger window, otherwise resize will fail
 	if (screenRect.height- windowRect.y < targetHeight) {
 		window.move({ "x": windowRect.x, "y": screenRect.height - targetHeight});
 	}
 	window.resize({ "width": windowRect.width, "height": targetHeight});
+
+	// Incrementally increase target width, to avoid odd behavior windows with discrete sizes, like terminal and emacs
+	var scale = 1;
+	var compensationFactor = 0.001;
+	var i = 1;
+	var compensatedTargetHeight;
+	for (var i = 0; window.rect().height < targetHeight; i++) {
+		compensatedTargetHeight = targetHeight * (scale + compensationFactor * i);
+		window.resize({ "width": windowRect.width, "height": compensatedTargetHeight});
+		windowRect = window.rect();
+	}
 }
 
 var cycleHorizontalPosition = function () {
