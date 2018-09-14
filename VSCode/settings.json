@@ -1,7 +1,13 @@
 // Place your settings in this file to overwrite the default settings
 {
+    // VSCode settings
+    "window.zoomLevel": -1,
+
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.statusBar.visible": false,
+    "workbench.editor.showTabs": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,   "workbench.statusBar.visible": false,
+
     "editor.renderWhitespace": "all",
     "editor.minimap.enabled": false,
     "editor.scrollbar.horizontal": "hidden",
@@ -9,20 +15,23 @@
     "editor.lightbulb.enabled": false,
     "editor.overviewRulerBorder": false,
     "editor.hideCursorInOverviewRuler": true,
-    "material-icon-theme.showUpdateMessage": false,
-    "extensions.ignoreRecommendations": false,
-    "csharp.suppressDotnetInstallWarning": true,
-    "editor.codeLens": false,
-    "editor.insertSpaces": false,
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.autoClosingBrackets": false,
+    "editor.codeLens": false,
+    "editor.insertSpaces": false,
     "editor.formatOnPaste": true,
-    "terminal.integrated.macOptionIsMeta": true,
+
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
     "explorer.openEditors.visible": 0,
-    "workbench.editor.showTabs": false,
-    "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "window.zoomLevel": -1
+
+    "extensions.ignoreRecommendations": false,
+
+    "terminal.integrated.macOptionIsMeta": true,
+
+    // Extension settings
+
+    "csharp.suppressDotnetInstallWarning": true,
+
+    "material-icon-theme.showUpdateMessage": false,
 }
