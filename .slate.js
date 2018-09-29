@@ -1,86 +1,78 @@
-S.cfga({
-	"modalEscapeKey" : "esc"
-});
+// Persistant data
 
-var horizontalFractions = [ 1/3, 1/2, 2/3, 1];
-var verticalFractions = [1/2, 1];
+var horizontalSizeFractions = [1/3, 1/2, 2/3, 1];
+var verticalSizeFractions = [1/2, 1];
 
-var descendingNumericSort = function (numericArray) {
-	return numericArray.sort(function (a, b) { return a - b });
+class WindowAlignment {
+	constructor () {
+		this.horizontalPositionIndex = 0;
+		this.verticalPositionIndex = 0;
+		this.horizontalSizeIndex = 0;
+		this.verticalSizeIndex = 0;
+	}
 }
 
-var getNextFraction = function (currentSize, targetFractions, referenceSize) {
-	targetFractions = descendingNumericSort(targetFractions);
-	targetFractions = targetFractions.map(function (element) {
-		return element * referenceSize;
-	});
+var windowAlignments = {};
 
-	var targetFractionIndex = 0;
-	for (var i = targetFractions.length - 1; i >= 0; i--) {
-		if (currentSize >= targetFractions[i]) {
-			targetFractionIndex = (i + 1) % targetFractions.length;
-			break;
-		}
+// The magic
+
+var getWindowAlignment = function(window) {
+	if (windowAlignments[window] === undefined) {
+		windowAlignments[window] = new WindowAlignment();
 	}
-	return targetFractions[targetFractionIndex];
+	return windowAlignments[window];
 }
 
 var cycleHorizontalSize = function () {
 	var window = S.window();
 	var windowRect = window.rect();
-
 	var screen = window.screen();
 	var screenRect = screen.visibleRect();
 
-	var targetWidth = getNextFraction(windowRect.width, horizontalFractions, screenRect.width);
+	var alignment = getWindowAlignment(window);
+
+	var targetIndex = alignment.horizontalSizeIndex;
+	targetIndex += 1;
+	targetIndex %= horizontalSizeFractions.length;
+	alignment.horizontalSizeIndex = targetIndex;
+
+	var targetFraction = horizontalSizeFractions[targetIndex];
+	var targetWidth = screenRect.width * targetFraction;
+
 	// Make room for larger window, otherwise resize will fail
 	if (screenRect.width - windowRect.x < targetWidth) {
-		window.move({"x": screenRect.width - targetWidth, "y": windowRect.y});
+		window.move({ "x": screenRect.width - targetWidth, "y": windowRect.y });
 	}
-	window.resize({"width": targetWidth, "height": windowRect.height});
 
-	// Incrementally increase target width, to avoid odd behavior windows with discrete sizes, like terminal and emacs
-	var scale = 1;
-	var compensationFactor = 0.001;
-	var i = 1;
-	var compensatedTargetWidth;
-	for (var i = 0; window.rect().width < targetWidth; i++) {
-		compensatedTargetWidth = targetWidth * (scale + compensationFactor * i);
-		window.resize({ "width": compensatedTargetWidth, "height": windowRect.height });
-		windowRect = window.rect();
-	}
+	window.resize({ "width": targetWidth, "height": windowRect.height });
 }
 
 var cycleVerticalSize = function () {
 	var window = S.window();
 	var windowRect = window.rect();
-
 	var screen = window.screen();
 	var screenRect = screen.visibleRect();
 
-	var targetHeight = getNextFraction(windowRect.height, verticalFractions, screenRect.height);
+	var alignment = getWindowAlignment(window);
+
+	var targetIndex = alignment.verticalSizeIndex;
+	targetIndex += 1;
+	targetIndex %= verticalSizeFractions.length;
+	alignment.verticalSizeIndex = targetIndex;
+
+	var targetFraction = verticalSizeFractions[targetIndex];
+	var targetHeight = screenRect.height * targetFraction;
+
 	// Make room for larger window, otherwise resize will fail
 	if (screenRect.height- windowRect.y < targetHeight) {
 		window.move({ "x": windowRect.x, "y": screenRect.height - targetHeight});
 	}
 	window.resize({ "width": windowRect.width, "height": targetHeight});
-
-	// Incrementally increase target width, to avoid odd behavior windows with discrete sizes, like terminal and emacs
-	var scale = 1;
-	var compensationFactor = 0.001;
-	var i = 1;
-	var compensatedTargetHeight;
-	for (var i = 0; window.rect().height < targetHeight; i++) {
-		compensatedTargetHeight = targetHeight * (scale + compensationFactor * i);
-		window.resize({ "width": windowRect.width, "height": compensatedTargetHeight});
-		windowRect = window.rect();
-	}
 }
 
 var cycleHorizontalPosition = function () {
 	var window = S.window();
 	var windowRect = window.rect();
-
 	var screen = window.screen();
 	var screenRect = screen.rect();
 	var screenVisibleRect = screen.visibleRect();
@@ -99,7 +91,6 @@ var cycleHorizontalPosition = function () {
 var cycleVerticalPosition = function () {
 	var window = S.window();
 	var windowRect = window.rect();
-
 	var screen = window.screen();
 	var screenRect = screen.rect();
 	var screenVisibleRect = screen.visibleRect();
@@ -114,6 +105,12 @@ var cycleVerticalPosition = function () {
 	if (numberOfPositions > 1)
 		window.resize({ "width": windowRect.width, "height": positionSize });
 }
+
+// Wire it all up to Slate, and some configuration
+
+S.cfga({
+	"modalEscapeKey": "esc"
+});
 
 S.bnda({
 	"j:ctrl,alt,shift,cmd,s:toggle": cycleHorizontalSize,
