@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "eyebrowse" "20180514.1919" "Easy window config switching" '((dash "2.7.0") (emacs "24.3.1")) :commit "421727327ecf5ec3beb3cc7162ab20d69115329b" :keywords '("convenience") :authors '(("Vasilij Schneidermann" . "v.schneidermann@gmail.com")) :maintainer '("Vasilij Schneidermann" . "v.schneidermann@gmail.com") :url "https://github.com/wasamasa/eyebrowse")
