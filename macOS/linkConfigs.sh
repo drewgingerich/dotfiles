@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 DOTFILES=~/configs/macOS
 
 ln -sf $DOTFILES/karabiner-elements/karabiner.json ~/.config/karabiner/karabiner.json
