@@ -9,50 +9,55 @@ ssht() {
 }
 
 dir-archive() {
+  local SRC="${1}"
   [[ "${1}" != */ ]] && SRC="${1}/"
+
+  local DEST="${2}"
   [[ "${2}" != */ ]] && DEST="${2}/"
 
-  
-  local additionalFlags
+  local FLAGS="-vrl"
 
   read -p "Dry run? (y/n): " dry
   if [[ "$dry" =~ (yes|y|Y) ]]; then 
     echo "Will do a dry run."
-    additionalFlags="$additionalFlags"n
+    FLAGS="$FLAGS"n
   fi
 
 #  read -p "Follow symlinks? (y/n): " followLinks
 #  if [[ "$followLinks" =~ (yes|y|Y) ]]; then 
 #    echo "Will follow symlinks."
-#    additionalFlags="$additionalFlags"lL
+#    FLAGS="$FLAGS"L
 #  fi
 
   read -p "This will update \""${DEST}"\" with contents of \""${SRC}"\". Continue? (y/n): " continue
   if [[ "$continue" =~ (yes|y|Y) ]]; then 
-    rsync -vrlL"$additionalFlags" --ignore-existing "$SRC" "$DEST"
+    rsync "$FLAGS" --ignore-existing "$SRC" "$DEST"
   fi
 }
 
 dir-push() {
+  local SRC="${1}"
   [[ "${1}" != */ ]] && SRC="${1}/"
+
+  local DEST="${2}"
   [[ "${2}" != */ ]] && DEST="${2}/"
 
-  local additionalFlags
+  local FLAGS="-vrl"
 
   read -p "Dry run? (y/n): " dry
   if [[ "$dry" =~ (yes|y|Y) ]]; then 
-    echo "Will do a dry run."    
-    additionalFlags="$additionalFlags"n
+    echo "Will do a dry run."
+    FLAGS="$FLAGS"n
   fi
 
 #  read -p "Follow symlinks? (y/n): " followLinks
 #  if [[ "$followLinks" =~ (yes|y|Y) ]]; then 
 #    echo "Will follow symlinks."
-#    additionalFlags="$additionalFlags"lL
+#    FLAGS="$FLAGS"L
 #  fi
 
   read -p "This will overwrite \""${DEST}"\" with contents of \""${SRC}"\". Continue? (y/n): " continue
   if [[ "$continue" =~ (yes|y|Y) ]]; then 
-    rsync -vrlL"$additionalFlags" --ignore-existing --force --delete "$SRC" "$DEST"
+    rsync "$FLAGS" --ignore-existing --force --delete "$SRC" "$DEST"
   fi
 }
