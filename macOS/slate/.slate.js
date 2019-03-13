@@ -118,5 +118,7 @@ S.bnda({
 	"l:ctrl,alt,shift,cmd,s:toggle": cycleVerticalSize,
 	";:ctrl,alt,shift,cmd,s:toggle": cycleVerticalPosition,
 
+	"s:ctrl,alt,shift,cmd,s": S.op("switch"),
+	"h:ctrl,alt,shift,cmd,s": S.op("hint"),
 	"r:ctrl,alt,shift,cmd,s": S.op("relaunch")
 });

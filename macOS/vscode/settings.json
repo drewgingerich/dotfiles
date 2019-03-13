@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
     // VSCode settings
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
 
     "workbench.iconTheme": "material-icon-theme",
     "workbench.editor.showTabs": false,
@@ -17,7 +17,6 @@
     "editor.hideCursorInOverviewRuler": true,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.autoClosingBrackets": false,
-    "editor.codeLens": false,
     "editor.formatOnPaste": true,
 
     "explorer.confirmDragAndDrop": false,
@@ -40,4 +39,8 @@
     "vim.easymotionMarkerFontFamily": "Menlo",
     "vim.easymotionMarkerYOffset": 6,
     "editor.insertSpaces": false,
+    "csharp.referencesCodeLens.enabled": false,
+    "csharp.testsCodeLens.enabled": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "One Dark Pro",
 }
