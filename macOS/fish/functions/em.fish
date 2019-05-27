@@ -19,7 +19,6 @@ function em -a subject
 				set target "~/archive/life/org/notes.org"
 			case "*"
 				set target "$argv[1]"
-				return 0
 		end
 	else
 		set target "~/active/"
