@@ -1,6 +1,6 @@
 // Persistant data
 
-var horizontalSizeFractions = [1/3, 1/2, 2/3, 1];
+var horizontalSizeFractions = [1/2, 1];
 var verticalSizeFractions = [1/2, 1];
 
 class WindowAlignment {
@@ -106,7 +106,18 @@ var cycleVerticalPosition = function () {
 		window.resize({ "width": windowRect.width, "height": positionSize });
 }
 
-// Wire it all up to Slate, and some configuration
+var fullscreen = function () {
+	var window = S.window();
+	var targetRect = window.screen().visibleRect();
+	window.move({
+		"x" : targetRect.x,
+		"Y" : targetRect.y
+	})
+	window.resize({
+		"width": targetRect.width,
+		"height": targetRect.height
+	})
+}
 
 S.cfga({
 	"modalEscapeKey": "esc"
@@ -117,8 +128,7 @@ S.bnda({
 	"k:ctrl,alt,shift,cmd,s:toggle": cycleHorizontalPosition,
 	"l:ctrl,alt,shift,cmd,s:toggle": cycleVerticalSize,
 	";:ctrl,alt,shift,cmd,s:toggle": cycleVerticalPosition,
+	"f:ctrl,alt,shift,cmd,s": fullscreen,
 
-	"s:ctrl,alt,shift,cmd,s": S.op("switch"),
-	"h:ctrl,alt,shift,cmd,s": S.op("hint"),
 	"r:ctrl,alt,shift,cmd,s": S.op("relaunch")
 });
