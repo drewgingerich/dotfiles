@@ -17,7 +17,6 @@
     "editor.hideCursorInOverviewRuler": true,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.autoClosingBrackets": false,
-    "editor.formatOnPaste": true,
 
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
@@ -38,9 +37,13 @@
     "vim.easymotion": true,
     "vim.easymotionMarkerFontFamily": "Menlo",
     "vim.easymotionMarkerYOffset": 6,
-    "editor.insertSpaces": false,
     "csharp.referencesCodeLens.enabled": false,
     "csharp.testsCodeLens.enabled": false,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.colorTheme": "One Dark Pro",
+    "editor.renderControlCharacters": false,
+    "editor.insertSpaces": false,
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
 }
