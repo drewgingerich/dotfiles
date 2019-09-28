@@ -39,11 +39,19 @@
     "vim.easymotionMarkerYOffset": 6,
     "csharp.referencesCodeLens.enabled": false,
     "csharp.testsCodeLens.enabled": false,
-    "workbench.startupEditor": "newUntitledFile",
+    "workbench.startupEditor": "none",
     "workbench.colorTheme": "One Dark Pro",
     "editor.renderControlCharacters": false,
     "editor.insertSpaces": false,
     "[html]": {
         "editor.defaultFormatter": "HookyQR.beautify"
     },
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "vim.leader": " ",
+    "vim.camelCaseMotion.enable": true,
+    "vim.foldfix": true,
+    "window.newWindowDimensions": "maximized",
+    "window.restoreWindows": "none",
 }
