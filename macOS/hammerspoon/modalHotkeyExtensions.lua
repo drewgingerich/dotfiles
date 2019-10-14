@@ -73,7 +73,6 @@ function module.makeTransient(mode, mods, key)
 					return heldMods[mod] ~= nil
 				end
 			)
-			logger.log(match)
 			if match ~= true then
 				return false
 			end
