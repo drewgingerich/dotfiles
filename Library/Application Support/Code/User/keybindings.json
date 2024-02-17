@@ -1,0 +1,61 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  // Terminal
+  // {
+  //   "key": "ctrl+shift+alt+cmd+t",
+  //   "command": "workbench.action.terminal.focus"
+  // },
+  {
+    "key": "ctrl+shift+alt+cmd+t",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.closePanel",
+        "workbench.action.terminal.focus"
+      ]
+    },
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+t",
+    "command": "workbench.action.closePanel",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+s",
+    "command": "workbench.action.quickOpenTerm"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.closePanel"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+r",
+    "command": "workbench.action.terminal.rename",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.killActiveTab",
+    "when": "terminalFocus"
+  },
+
+  {
+    "key": "ctrl+shift+alt+cmd+j",
+    "command": ["workbench.action.closePanel"]
+  },
+
+  // Editor
+  {
+    "key": "ctrl+shift+alt+cmd+n",
+    "command": "workbench.action.moveEditorToRightGroup"
+  },
+  {
+    "key": "ctrl+shift+alt+cmd+p",
+    "command": "workbench.action.moveEditorToLeftGroup"
+  },
+  {
+    "key": "cmd+k cmd+w",
+    "command": "workbench.action.closeEditorsInGroup"
+  }
+]
