@@ -1,0 +1,8 @@
+/*/
+
+!/.config/
+
+!/Library/
+/Library/*
+!/Library/Application Support
+
