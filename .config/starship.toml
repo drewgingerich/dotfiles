@@ -4,4 +4,4 @@ command_timeout = 750
 
 [kubernetes]
 disabled = false
-format = '[$context $symbol]($style) in '
+format = '[$context $symbol]($style)in '
