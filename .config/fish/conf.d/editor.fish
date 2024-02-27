@@ -1,2 +1,2 @@
-set -x EDITOR nvim
+set -x EDITOR hx
 set -x VISUAL code
