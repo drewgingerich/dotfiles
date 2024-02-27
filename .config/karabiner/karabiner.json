@@ -143,7 +143,7 @@
                         ]
                     },
                     {
-                        "description": "Change return key to control+option+command. (Post return key when pressed alone)",
+                        "description": "Change return key to control+option+shift. (Post return key when pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
@@ -156,7 +156,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_command",
+                                        "key_code": "left_shift",
                                         "lazy": true,
                                         "modifiers": [
                                             "left_control",
