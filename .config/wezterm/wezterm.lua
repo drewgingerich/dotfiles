@@ -12,6 +12,8 @@ wezterm.on("gui-startup", function()
   window:gui_window():maximize()
 end)
 
+config.window_close_confirmation = 'NeverPrompt'
+
 config.leader = { key = 'Space', mods = 'SHIFT', timeout_milliseconds = 1000 }
 config.keys = {
   {
