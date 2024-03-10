@@ -1,4 +1,7 @@
 theme = "base16_terminal"
 
+[editor]
+auto-pairs = false
+
 [editor.file-picker]
 hidden = false
