@@ -5,9 +5,6 @@
   "[javascript]": {
     "editor.maxTokenizationLineLength": 2500
   },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
-  },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
@@ -58,7 +55,6 @@
     "scminput": false
   },
   "go.toolsManagement.autoUpdate": true,
-  "godot_tools.gdscript_lsp_server_port": 6005,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "python.venvPath": "${workspaceFolder}/.tox",
   "search.collapseResults": "alwaysCollapse",
@@ -97,7 +93,7 @@
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 16,
-  "jest.autoRun": "off",
+  "jest.runMode": "on-demand",
   "workbench.panel.opensMaximized": "always",
   "editor.formatOnSave": true,
   "window.zoomLevel": 2
