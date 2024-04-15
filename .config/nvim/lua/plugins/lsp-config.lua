@@ -25,12 +25,13 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.tsserver.setup({ capabilities = capabilities })
-      lspconfig.gopls.setup({ capabilities = capabilities })
-      lspconfig.pylsp.setup({ capabilities = capabilities })
+			local lspconfig = require("lspconfig")
+			lspconfig.lua_ls.setup({ capabilities = capabilities })
+			lspconfig.tsserver.setup({ capabilities = capabilities })
+			lspconfig.gopls.setup({ capabilities = capabilities })
+			lspconfig.pylsp.setup({ capabilities = capabilities })
       lspconfig.astro.setup({ capabilities = capabilities })
+      lspconfig.ruby_ls.setup({ capabilities = capabilities })
 
       vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open LSP diagnostic float" })
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
