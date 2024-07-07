@@ -8,9 +8,11 @@ return {
   },
   config = function()
     require("dap-go").setup()
-    require("dap-python").setup("~/.venvs/debugpy/bin/python")
+    require("dap-python").setup(
+      vim.fs.joinpath(vim.fn.stdpath("data"), "mason/packages/debugpy/venv/bin/python")
+    )
     require("dap-vscode-js").setup({
-      debugger_path = "(stdpath('data'))/mason/vscode-js-debug",
+      debugger_path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/js-debug-adapter"),
       adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
     })
 
