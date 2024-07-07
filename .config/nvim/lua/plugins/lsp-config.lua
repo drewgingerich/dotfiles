@@ -32,7 +32,7 @@ return {
 			lspconfig.gopls.setup({ capabilities = capabilities })
 			lspconfig.pyright.setup({ capabilities = capabilities })
       lspconfig.astro.setup({ capabilities = capabilities })
-      lspconfig.ruby_ls.setup({ capabilities = capabilities })
+      lspconfig.ruby_lsp.setup({ capabilities = capabilities })
       lspconfig.marksman.setup({ capabilities = capabilities })
       lspconfig.ruff_lsp.setup({ capabilities = capabilities })
 
