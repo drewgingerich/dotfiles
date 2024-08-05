@@ -17,6 +17,10 @@ end)
 
 config.window_close_confirmation = "NeverPrompt"
 
+config.set_environment_variables = {
+  XDG_CONFIG_HOME = os.getenv("HOME") .. "/.config"
+}
+
 config.leader = { key = "Space", mods = "SHIFT", timeout_milliseconds = 1000 }
 
 config.keys = {
