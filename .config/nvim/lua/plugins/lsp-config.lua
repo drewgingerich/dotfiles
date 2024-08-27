@@ -36,6 +36,10 @@ return {
       lspconfig.marksman.setup({ capabilities = capabilities })
       lspconfig.ruff_lsp.setup({ capabilities = capabilities })
       lspconfig.yamlls.setup({ capabilities = capabilities })
+      lspconfig.helm_ls.setup({
+        capabilities = capabilities,
+        yamlls = { path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/yaml-language-server") }
+      })
 
       vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open LSP diagnostic float" })
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
