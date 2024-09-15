@@ -1,11 +1,5 @@
 return {
   {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
@@ -13,6 +7,9 @@ return {
           "lua_ls",
           "tsserver",
           "gopls",
+          "nil_ls",
+          "yamlls",
+          "marksman",
         },
       })
     end,
@@ -39,6 +36,10 @@ return {
       lspconfig.helm_ls.setup({
         capabilities = capabilities,
         yamlls = { path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/yaml-language-server") }
+      lspconfig.nil_ls.setup({ capabilities = capabilities })
+      lspconfig.gdscript.setup({
+        name = "godot",
+        cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
       })
 
       vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open LSP diagnostic float" })
