@@ -36,6 +36,7 @@ return {
       lspconfig.helm_ls.setup({
         capabilities = capabilities,
         yamlls = { path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/yaml-language-server") }
+      })
       lspconfig.nil_ls.setup({ capabilities = capabilities })
       lspconfig.gdscript.setup({
         name = "godot",
