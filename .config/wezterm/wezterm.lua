@@ -3,17 +3,8 @@ local wezterm = require("wezterm")
 local config = {}
 
 config.color_scheme = "Navy and Ivory (terminal.sexy)"
--- config.color_scheme = 'Catppuccin Mocha'
--- config.color_scheme = 'Nebula (base16)'
--- config.color_scheme = 'neobones_dark'
--- config.color_scheme = 'Neon Night (Gogh)'
 config.font = wezterm.font("Inconsolata")
 config.font_size = 20
-
-wezterm.on("gui-startup", function()
-	local window = wezterm.mux.spawn_window({})
-	window:gui_window():maximize()
-end)
 
 config.window_close_confirmation = "NeverPrompt"
 
@@ -80,3 +71,6 @@ config.keys = {
 }
 
 return config
+
+-- Resources
+-- https://github.com/wez/wezterm/issues/3299
