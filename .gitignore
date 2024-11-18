@@ -2,6 +2,10 @@
 
 !/.config/
 
+!/.local/
+/.local/*
+!/.local/share
+
 !/Library/
 /Library/*
 !/Library/Application Support
