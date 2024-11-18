@@ -42,6 +42,10 @@ return {
 				name = "godot",
 				cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
 			})
+      lspconfig.vale_ls.setup({
+        capabilities = capabilities,
+        cmd = { vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/vale-ls") }
+      })
 
 			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open LSP diagnostic float" })
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
