@@ -35,17 +35,25 @@ return {
 			lspconfig.yamlls.setup({ capabilities = capabilities })
 			lspconfig.helm_ls.setup({
 				capabilities = capabilities,
-				yamlls = { path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/yaml-language-server") },
+				yamlls = {
+					-- enabled = false,
+					-- path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/yaml-language-server"),
+				},
 			})
 			lspconfig.nil_ls.setup({ capabilities = capabilities })
 			lspconfig.gdscript.setup({
 				name = "godot",
 				cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
 			})
-      lspconfig.vale_ls.setup({
-        capabilities = capabilities,
-        cmd = { vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/vale-ls") }
-      })
+			lspconfig.volar.setup({ capabilities = capabilities })
+			lspconfig.vale_ls.setup({
+				capabilities = capabilities,
+				cmd = { vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/vale-ls") },
+			})
+			lspconfig.starlark_rust.setup({
+				capabilities = capabilities,
+				filetypes = { "star", "bzl", "BUILD.bazel", "Tiltfile" },
+			})
 
 			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open LSP diagnostic float" })
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
@@ -99,7 +107,15 @@ return {
 				end,
 			})
 		end,
-		dependencies = { "nvim-telescope/telescope.nvim" },
+		dependencies = { "nvim-telescope/telescope.nvim", "towolf/vim-helm" },
+	},
+	{
+		"towolf/vim-helm",
+    -- 24-12-12
+    -- Needed to prevent yamlls from attaching to helm filetype
+    -- This is because Helm uses the `.yaml` file extension even though it's not a YAML file
+    -- https://github.com/neovim/nvim-lspconfig/issues/2252#issuecomment-2198825338
+		ft = "helm",
 	},
 	{
 		"folke/trouble.nvim",

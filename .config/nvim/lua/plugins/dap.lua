@@ -76,9 +76,25 @@ return {
 		},
 		config = function()
 			require("dap-vscode-js").setup({
-				debugger_path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/js-debug-adapter"),
+				debugger_cmd = { vim.fs.joinpath(vim.fn.stdpath("data"), "mason/bin/js-debug-adapter") },
 				adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 			})
+
+      -- local dap = require("dap")
+      --
+      -- if not dap.adapters["node"] then
+      --   dap.adapters["node"] = function(cb, config)
+      --     if config.type == "node" then
+      --       config.type = "pwa-node"
+      --     end
+      --     local nativeAdapter = dap.adapters["pwa-node"]
+      --     if type(nativeAdapter) == "function" then
+      --       nativeAdapter(cb, config)
+      --     else
+      --       cb(nativeAdapter)
+      --     end
+      --   end
+      -- end
 		end,
 	},
 }
